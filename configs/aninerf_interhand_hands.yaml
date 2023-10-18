@@ -1,0 +1,24 @@
+parent_cfg: 'configs/aninerf_interhand.yaml'
+
+train_dataset:
+    data_root: 'data/InterHand2.6M_30fps/images/train/Capture0/0259_dh_rightclaspleft'
+    hand_type: "both"
+
+test_dataset:
+    data_root: 'data/InterHand2.6M_30fps/images/train/Capture0/0259_dh_rightclaspleft'
+    hand_type: "both"
+
+# num_train_frame: 75
+
+# N_samples: 64
+# N_rand: 16384
+
+# ratio: 1.0
+
+density_activation: "softplus"
+density_bias: -1.0
+
+hands_share_params: False
+use_hands_align_loss: False
+weight_hands_align: 0.01
+# use_distill: False

@@ -1,0 +1,30 @@
+imageio~=2.31.5
+lpips~=0.1.4
+matplotlib~=3.8.0
+opencv-contrib-python~=4.8.1.78
+PyMCubes~=0.1.4
+pymeshfix~=0.16.2
+# pysdf~=0.1.8
+# git+https://github.com/NVIDIAGameWorks/kaolin
+-f https://nvidia-kaolin.s3.us-east-2.amazonaws.com/torch-2.0.1_cu118.html
+kaolin==0.14.0
+PyYAML~=6.0.1
+scikit-image~=0.22.0
+tensorboard~=2.11.2
+termcolor~=2.3.0
+timm~=0.9.7
+torchmetrics~=1.2.0
+torch-fidelity~=0.3.0
+tqdm~=4.66.1
+trimesh~=4.0.0
+
+# # for optional configs
+spconv-cu120~=2.3.6
+# git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
+# git+https://github.com/xinntao/Real-ESRGAN
+# basicsr~=1.4.2  # run `pip install --no-deps basicsr` instead
+git+https://github.com/jasongzy/livehand
+
+# # online preprocess
+-r tools/InterHand2.6M/requirements.txt
+

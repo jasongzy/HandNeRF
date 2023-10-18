@@ -1,0 +1,11 @@
+smplx[all]
+# git+https://github.com/vchoutas/smplx#egg=smplx
+# chumpy # does not work with numpy>=1.24.0
+git+https://github.com/mattloper/chumpy
+tqdm
+git+https://github.com/MPI-IS/mesh#egg=psbody-mesh
+ipykernel
+ipympl
+scikit-learn
+pandas
+open3d>=0.16.0

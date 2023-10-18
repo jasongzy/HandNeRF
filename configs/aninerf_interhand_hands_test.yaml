@@ -1,0 +1,17 @@
+parent_cfg: 'configs/aninerf_interhand_hands.yaml'
+
+split: "test"
+capture: 0
+seq: "ROM02_Interaction_2_Hand"
+
+train_dataset:
+    hand_type: "both"
+
+test_dataset:
+    hand_type: "both"
+
+training_view: ['400262', '400263', '400264', '400265', '400268', '400272', '400274', '400285', '400291', '400299', '400310', '400312']
+test_view: []
+num_train_frame: 250
+
+use_amp: False

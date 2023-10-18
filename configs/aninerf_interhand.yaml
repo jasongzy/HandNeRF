@@ -1,0 +1,155 @@
+parent_cfg: 'configs/aninerf_s9p.yaml'
+task: 'new'
+
+split: ''
+capture: -1
+seq: ''
+
+train_dataset:
+    data_root: 'data/InterHand2.6M_30fps/images/train/Capture0/0051_dinosaur'
+    hand_type: "right"
+
+test_dataset:
+    data_root: 'data/InterHand2.6M_30fps/images/train/Capture0/0051_dinosaur'
+    hand_type: "right"
+
+interhands_cfg:
+    trainer_module: 'lib.train.trainers.interhands_trainer'
+    trainer_path: 'lib/train/trainers/interhands_trainer.py'
+    train_dataset_module: 'lib.datasets.interhands_dataset'
+    train_dataset_path: 'lib/datasets/interhands_dataset.py'
+    test_dataset_module: 'lib.datasets.interhands_dataset'
+    test_dataset_path: 'lib/datasets/interhands_dataset.py'
+    network_module: 'lib.networks.bw_deform.interhands_network'
+    network_path: 'lib/networks/bw_deform/interhands_network.py'
+    renderer_module: 'lib.networks.renderer.interhands_renderer'
+    renderer_path: 'lib/networks/renderer/interhands_renderer.py'
+
+train:
+    batch_size: 1
+    collator: ''
+    lr: 5e-4
+    weight_decay: 0
+    epoch: 400
+    scheduler:
+        type: 'exponential'
+        gamma: 0.1
+        decay_epochs: 1000
+    num_workers: 10
+
+test:
+    sampler: 'FrameSampler'
+    frame_sampler_interval: 5
+    batch_size: 1
+    collator: ''
+
+ep_iter: -1
+save_ep: 50
+eval_ep: 1
+save_latest_ep: 1
+
+# training options
+train_th: 0.
+norm_th: 0.05
+
+# rendering options
+xyz_res: 10
+view_res: 4
+pe_scaling: False # scale to [-pi, pi] before positional encoding
+
+N_samples: 64
+N_rand: 8192
+
+perturb: 1
+white_bkgd: False
+
+# data options
+H: 512
+W: 334
+ratio: 0.5
+training_view: ['400002', '400004', '400010', '400012', '400013', '400016', '400018', '400042', '400053', '400059']
+# training_view: ['400002', '400004', '400013', '400016', '400018', '400042', '400059']
+# training_view: ['400004', '400016', '400018', '400042']
+test_view: ['400009', '400017', '400019', '400023', '400026', '400027', '400028', '400029', '400030', '400031', '400037', '400039', '400041', '400048', '400051', '400060', '400063', '400064']
+init_aninerf: 'no_pretrain'
+num_train_frame: -1
+num_eval_frame: -1
+begin_ith_frame: 0
+frame_interval: 1
+vertices: 'vertices'
+params: 'params'
+distill: 'dino'
+box_padding: 0.05
+
+erode_edge: False
+mask_bkgd: True
+fix_random: True
+body_sample_ratio: 0.5
+
+seed: 42
+
+chunk: 16384
+use_amp: True
+torch_compile: False
+
+density_activation: "softplus"
+density_bias: -1.0
+# view_activation: "relu"
+# rgb_prior: [0.49, 0.38, 0.18]
+poses_hidden_dim: 256
+poses_layer_num: 8
+poses_skips: [5]
+poses_activation: "relu"
+displ_hidden_dim: 256
+displ_layer_num: 9
+displ_skips: [5]
+displ_activation: ["relu", "tanh"]
+
+is_interhand: True
+learn_bw: False  # if False: directly use SMPL blend weights
+use_poses: True  # if False: use per-frame latent code (to learn bw or displacement)
+poses_format: axis_angle  # ["axis_angle", "axis_angle_norm", "quaternion"]
+use_bs: True
+learn_displacement: True
+weight_displ: 0.1
+
+use_viewdir: True
+use_pose_viewdir: True
+use_tpose_viewdir: False
+use_color_range_loss: False
+use_color_var_loss: False
+shading_mode: "latent"  # ["none", "latent", "ao": ambient occlusion]
+rgb_dim: 256
+
+use_perceptual_loss: False
+use_depth: True
+depth_loss: "smooth_l1"
+weight_depth: 1.0
+exact_depth: False
+use_mask_loss: False
+use_sparsity_loss: False
+use_distortion_loss: False
+use_hard_surface_loss: False
+use_hard_surface_loss_canonical: False
+use_alpha_sdf: "always"  # ["none", "train_init", "always", "residual"]
+use_alpha_loss: True
+prior_knowledge_loss_decay: False
+
+encoding: "mip"  # ["nerf", "mip", "triplane", "hash"]
+# encoding: "triplane"
+triplane_res: 64
+triplane_dim: 32
+triplane_reduce: "sum"  # ["sum", "product", "concat", "none"]
+# xyz_layer_num: 2
+# xyz_skips: []
+use_neural_renderer: False
+neural_renderer_type: "cnn"
+sr_ratio: 2.0
+use_both_renderer: False
+use_distill: False
+use_sr: "none"  # ["swinir", "realesrgan", "none"]
+
+eval_full_img: True
+
+voxel_size: [0.001, 0.001, 0.001]
+mesh_smooth_iter: 10
