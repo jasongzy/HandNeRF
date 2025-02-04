@@ -5,8 +5,6 @@
 > [HandNeRF: Neural Radiance Fields for Animatable Interacting Hands](https://openaccess.thecvf.com/content/CVPR2023/papers/Guo_HandNeRF_Neural_Radiance_Fields_for_Animatable_Interacting_Hands_CVPR_2023_paper.pdf)
 >
 > Zhiyang Guo, Wengang Zhou, Min Wang, Li Li, Houqiang Li
->
-> CVPR 2023
 
 ## Installation
 
@@ -33,6 +31,12 @@ pip install --no-index --no-cache-dir pytorch3d -f https://dl.fbaipublicfiles.co
 
 Then follow its [data preparation guide](https://github.com/Dw1010/IntagHand#pre-trained-model-and-data) to deploy the necessary data in `tools/IntagHand/misc`.
 
+## Training
+
+```shell
+bash train_hands.sh
+```
+
 ## Acknowledgement
 
 - [zju3dv/animatable_nerf](https://github.com/zju3dv/animatable_nerf)
@@ -48,10 +52,9 @@ Then follow its [data preparation guide](https://github.com/Dw1010/IntagHand#pre
   year={2023}
 }
 
-@misc{guo2024handnerfpp,
+@article{guo2024handnerfpp,
   title={{HandNeRF++}: Modeling Animatable Interacting Hands with Neural Radiance Fields},
   author={Guo, Zhiyang and Zhou, Wengang and Wang, Min and Li, Li and Li, Houqiang},
-  publisher={arXiv},
   year={2024}
 }
 ```
